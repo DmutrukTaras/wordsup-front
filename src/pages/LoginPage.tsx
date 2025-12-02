@@ -8,11 +8,6 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const token = localStorage.getItem('authToken');
-
-  if (token) {
-    return <Navigate to="/dashboard" replace />;
-  }
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

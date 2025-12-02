@@ -1,3 +1,4 @@
+// src/main.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
@@ -17,63 +18,67 @@ import WordsPage from './pages/WordsPage';
 import WordFormPage from './pages/WordFormPage';
 import MultipleChoiceGamePage from './pages/MultipleChoiceGamePage';
 import BuildWordGamePage from './pages/BuildWordGamePage';
+import { ProtectedRoute } from './routes/ProtectedRoute';
 
 const queryClient = new QueryClient();
 
 const Root = () => {
-  const token = localStorage.getItem('authToken');
-
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />}>
-            <Route
-              index
-              element={
-                token ? (
-                  <Navigate to="/dashboard" replace />
-                ) : (
-                  <Navigate to="/login" replace />
-                )
-              }
-            />
+            <Route index element={<Navigate to="/dashboard" replace />} />
+
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+
             <Route
               path="/dashboard"
               element={
-                token ? <DashboardPage /> : <Navigate to="/login" replace />
+                <ProtectedRoute>
+                  <DashboardPage />
+                </ProtectedRoute>
               }
             />
             <Route
               path="/groups"
               element={
-                token ? <GroupsPage /> : <Navigate to="/login" replace />
+                <ProtectedRoute>
+                  <GroupsPage />
+                </ProtectedRoute>
               }
             />
             <Route
               path="/words"
               element={
-                token ? <WordsPage /> : <Navigate to="/login" replace />
+                <ProtectedRoute>
+                  <WordsPage />
+                </ProtectedRoute>
               }
             />
             <Route
               path="/words/new"
               element={
-                token ? <WordFormPage /> : <Navigate to="/login" replace />
+                <ProtectedRoute>
+                  <WordFormPage />
+                </ProtectedRoute>
               }
             />
             <Route
               path="/games/multipleChoice"
               element={
-                token ? <MultipleChoiceGamePage /> : <Navigate to="/login" replace />
+                <ProtectedRoute>
+                  <MultipleChoiceGamePage />
+                </ProtectedRoute>
               }
             />
             <Route
               path="/games/buildWord"
               element={
-                token ? <BuildWordGamePage /> : <Navigate to="/login" replace />
+                <ProtectedRoute>
+                  <BuildWordGamePage />
+                </ProtectedRoute>
               }
             />
           </Route>
