@@ -144,7 +144,7 @@ const BuildWordGamePage = () => {
     if (settings.groupId !== 'all') {
       const inGroup = pool.filter((w) => w.group_id === settings.groupId);
       const outOfGroup = pool.filter((w) => w.group_id !== settings.groupId);
-      pool = [...inGroup, ...outOfGroup];
+      pool = [...inGroup, ...(inGroup.length < 10 ? outOfGroup : [])];
     }
 
     // потрібен український переклад
@@ -397,7 +397,7 @@ const BuildWordGamePage = () => {
 
   return (
     <div>
-      <h1 className="text-xl font-semibold mb-3">Гра: Склади слово</h1>
+      <h1 className="text-xl font-semibold mb-3">Вправа: Склади слово</h1>
 
       <div className="bg-slate-900 border border-slate-700 rounded-xl p-4 max-w-3xl mx-auto">
         {phase === 'setup' && (

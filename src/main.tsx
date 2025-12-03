@@ -18,6 +18,8 @@ import WordsPage from './pages/WordsPage';
 import WordFormPage from './pages/WordFormPage';
 import MultipleChoiceGamePage from './pages/MultipleChoiceGamePage';
 import BuildWordGamePage from './pages/BuildWordGamePage';
+import MatchingPairsGamePage from './pages/MatchingPairsGamePage';
+import ColumnPairsGamePage from './pages/ColumnPairsGamePage';
 import { ProtectedRoute } from './routes/ProtectedRoute';
 
 const queryClient = new QueryClient();
@@ -78,6 +80,22 @@ const Root = () => {
               element={
                 <ProtectedRoute>
                   <BuildWordGamePage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/games/matchingPairs"
+              element={
+                <ProtectedRoute>
+                  <MatchingPairsGamePage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/games/columnPairs"
+              element={
+                <ProtectedRoute>
+                  <ColumnPairsGamePage />
                 </ProtectedRoute>
               }
             />

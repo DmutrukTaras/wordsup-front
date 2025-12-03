@@ -53,7 +53,7 @@ const App = () => {
                     }`
                   }
                 >
-                  Гра: Варіанти
+                  Варіанти
                 </NavLink>
                 <NavLink
                   to="/games/buildWord"
@@ -63,7 +63,30 @@ const App = () => {
                     }`
                   }
                 >
-                  Гра: Склади слово
+                  Склади слово
+                </NavLink>
+                <NavLink
+                  to="/games/columnPairs"
+                  className={({ isActive }) =>
+                    `block px-3 py-2 rounded-md ${
+                      isActive ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800'
+                    }`
+                  }
+                >
+                  Пари слів
+                </NavLink>
+                <p className="text-slate-400 uppercase text-xs mb-2">
+                  Ігри
+                </p>
+                <NavLink
+                  to="/games/matchingPairs"
+                  className={({ isActive }) =>
+                    `block px-3 py-2 rounded-md ${
+                      isActive ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800'
+                    }`
+                  }
+                >
+                  Знайди пару
                 </NavLink>
             </nav>
           </aside>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import api from '../api/client';
+import { Link } from 'react-router-dom';
 
 interface Group {
   id: number;
@@ -109,7 +110,15 @@ const WordsPage = () => {
 
   return (
     <div>
-      <h1 className="text-xl font-semibold mb-3">Слова</h1>
+      <div className="flex items-center justify-between mb-4 md:flex-row flex-col gap-3">
+        <h1 className="text-xl font-semibold mb-3">Слова</h1>
+        <Link
+          to="/words/new"
+          className="px-4 py-2 rounded-md bg-emerald-500 hover:bg-emerald-600 w-full md:w-auto justify-center md:justify-normal text-sm flex"
+        >
+          Додати нове слово
+        </Link>
+      </div>
 
       {/* Фільтри */}
       <div className="flex flex-wrap gap-3 mb-4 text-sm">
