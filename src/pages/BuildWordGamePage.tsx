@@ -575,11 +575,11 @@ const BuildWordGamePage = () => {
                     {currentWord.translation_uk}
                 </p>
               )}
-              {currentWord.transcription && (
+              {/* {currentWord.transcription && (
                 <p className="text-xs text-slate-400">
                   [{currentWord.transcription}]
                 </p>
-              )}
+              )} */}
             </div>
 
             {/* Слоти слова */}
