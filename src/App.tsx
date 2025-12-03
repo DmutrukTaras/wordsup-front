@@ -75,6 +75,16 @@ const App = () => {
                 >
                   Пари слів
                 </NavLink>
+                <NavLink
+                  to="/games/listenWords"
+                  className={({ isActive }) =>
+                    `block px-3 py-2 rounded-md ${
+                      isActive ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800'
+                    }`
+                  }
+                >
+                  🎧 Слухати слова
+                </NavLink>
                 <p className="text-slate-400 uppercase text-xs mb-2">
                   Ігри
                 </p>

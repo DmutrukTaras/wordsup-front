@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import api from '../api/client';
 import { Link } from 'react-router-dom';
+import { playWord } from '../helper';
 
 interface Group {
   id: number;
@@ -211,12 +212,14 @@ const WordsPage = () => {
                     <span className="font-semibold truncate">
                       {w.word_en}
                     </span>
+
                     {w.transcription && (
                       <span className="text-xs text-slate-400">
                         [{w.transcription}]
                       </span>
                     )}
                   </div>
+
                   <p className="text-xs text-slate-300 truncate">
                     {w.translation_uk || (
                       <span className="italic">немає перекладу</span>
@@ -227,6 +230,15 @@ const WordsPage = () => {
 
               {/* Права частина: керування */}
               <div className="hidden md:flex items-center gap-2 text-xs">
+                {/* Кнопка аудіо */}
+                <button
+                  type="button"
+                  onClick={() => playWord(w.word_en)}
+                  className="ml-1 inline-flex items-center justify-center w-7 h-7 rounded-full bg-slate-800 hover:bg-slate-700 text-xs shrink-0"
+                  title="Прослухати вимову"
+                >
+                  🔊
+                </button>
                 <select
                   value={w.status}
                   onChange={(e) =>
