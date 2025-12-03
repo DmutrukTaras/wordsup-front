@@ -586,7 +586,7 @@ const ListenWordsGamePage: React.FC = () => {
             />
           </div>
 
-          <div className="bg-slate-950/40 rounded-lg border border-slate-700 p-4 flex gap-4 items-center min-h-[140px]">
+          <div className="bg-slate-950/40 rounded-lg border border-slate-700 p-4 flex md:flex-row flex-col gap-4 items-center min-h-[140px]">
             {/* Картинка */}
             {currentWord?.image_url && (
               <img
