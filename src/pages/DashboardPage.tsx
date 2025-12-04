@@ -48,6 +48,12 @@ const DashboardPage = () => {
          Пари слів
         </Link>
         <Link
+          to="/games/flashcards"
+          className="px-4 py-2 rounded-md bg-indigo-500 hover:bg-indigo-600 w-full md:w-auto justify-center md:justify-normal text-sm flex"
+        >
+         Картки
+        </Link>
+        <Link
           to="/games/listenWords"
           className="px-4 py-2 rounded-md bg-indigo-500 hover:bg-indigo-600 w-full md:w-auto justify-center md:justify-normal text-sm flex"
         >

@@ -259,7 +259,15 @@ const WordsPage = () => {
               </div>
 
               {/* Мобільний варіант: меню з трьома крапками */}
-              <div className="relative md:hidden">
+              <div className="relative md:hidden flex items-center">
+                <button
+                  type="button"
+                  onClick={() => playWord(w.word_en)}
+                  className="mr-2 w-8 h-8 inline-flex items-center justify-center rounded-full bg-slate-800 hover:bg-slate-700 text-lg leading-none"
+                  title="Прослухати вимову"
+                >
+                  🔊
+                </button>
                 <button
                   type="button"
                   className="w-8 h-8 inline-flex items-center justify-center rounded-full bg-slate-800 hover:bg-slate-700 text-lg leading-none"

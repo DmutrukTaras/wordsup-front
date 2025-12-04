@@ -76,6 +76,16 @@ const App = () => {
                   Пари слів
                 </NavLink>
                 <NavLink
+                  to="/games/flashcards"
+                  className={({ isActive }) =>
+                    `block px-3 py-2 rounded-md ${
+                      isActive ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800'
+                    }`
+                  }
+                >
+                  Картки
+                </NavLink>
+                <NavLink
                   to="/games/listenWords"
                   className={({ isActive }) =>
                     `block px-3 py-2 rounded-md ${

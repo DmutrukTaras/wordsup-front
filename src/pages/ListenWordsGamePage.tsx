@@ -550,7 +550,7 @@ const ListenWordsGamePage: React.FC = () => {
             type="button"
             disabled={!canPlay || isPlaying}
             onClick={handleStart}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-emerald-500 hover:bg-emerald-600 disabled:opacity-60 text-sm"
+            className="inline-flex justify-center w-full md:w-auto items-center gap-2 px-4 py-2 rounded-md bg-emerald-500 hover:bg-emerald-600 disabled:opacity-60 text-sm"
           >
             ▶ Запустити прослуховування
           </button>
@@ -643,7 +643,7 @@ const ListenWordsGamePage: React.FC = () => {
               type="button"
               onClick={handleStop}
               disabled={!isPlaying}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-red-500 hover:bg-red-600 disabled:opacity-60 text-sm"
+              className="w-full md:w-auto justify-center inline-flex items-center gap-2 px-4 py-2 rounded-md bg-red-500 hover:bg-red-600 disabled:opacity-60 text-sm"
             >
               ⏹ Зупинити
             </button>

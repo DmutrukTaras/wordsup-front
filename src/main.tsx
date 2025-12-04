@@ -21,6 +21,7 @@ import BuildWordGamePage from './pages/BuildWordGamePage';
 import MatchingPairsGamePage from './pages/MatchingPairsGamePage';
 import ColumnPairsGamePage from './pages/ColumnPairsGamePage';
 import ListenWordsGamePage from './pages/ListenWordsGamePage';
+import FlashcardsGamePage from './pages/FlashcardsGamePage';
 import { ProtectedRoute } from './routes/ProtectedRoute';
 
 const queryClient = new QueryClient();
@@ -97,6 +98,14 @@ const Root = () => {
               element={
                 <ProtectedRoute>
                   <ColumnPairsGamePage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/games/flashcards"
+              element={
+                <ProtectedRoute>
+                  <FlashcardsGamePage />
                 </ProtectedRoute>
               }
             />
