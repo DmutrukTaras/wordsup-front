@@ -13,10 +13,14 @@ interface Group {
 
 const GroupsPage = () => {
   const queryClient = useQueryClient();
+
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [color, setColor] = useState('#22c55e');
   const [error, setError] = useState<string | null>(null);
+
+  // група для підтвердження видалення (null = модалка закрита)
+  const [confirmGroup, setConfirmGroup] = useState<Group | null>(null);
 
   const { data: groups, isLoading } = useQuery<Group[]>({
     queryKey: ['groups'],
@@ -51,6 +55,7 @@ const GroupsPage = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['groups'] });
+      setConfirmGroup(null); // закриваємо модалку після успіху
     }
   });
 
@@ -61,6 +66,11 @@ const GroupsPage = () => {
       return;
     }
     createMutation.mutate();
+  };
+
+  const handleConfirmDelete = () => {
+    if (!confirmGroup) return;
+    deleteMutation.mutate(confirmGroup.id);
   };
 
   return (
@@ -137,7 +147,7 @@ const GroupsPage = () => {
                   </div>
                 </div>
                 <button
-                  onClick={() => deleteMutation.mutate(g.id)}
+                  onClick={() => setConfirmGroup(g)}
                   className="text-xs text-red-400 hover:text-red-300"
                 >
                   Видалити
@@ -147,6 +157,43 @@ const GroupsPage = () => {
           </div>
         )}
       </div>
+
+      {/* Модалка підтвердження видалення */}
+      {confirmGroup && (
+        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60">
+          <div className="bg-slate-900 border border-slate-700 rounded-xl p-5 max-w-md w-full mx-4 shadow-xl">
+            <h3 className="text-lg font-semibold mb-3 text-red-300">
+              Видалити групу?
+            </h3>
+            <p className="text-sm text-slate-200 mb-2">
+              Група: <span className="font-semibold">{confirmGroup.name}</span>
+            </p>
+            <p className="text-xs text-slate-400 mb-4">
+              Ця дія <span className="font-semibold text-red-300">видалить групу та всі слова</span>, 
+              які до неї належать. Дію неможливо скасувати.
+            </p>
+
+            <div className="flex flex-wrap gap-2 justify-end text-sm">
+              <button
+                type="button"
+                className="px-4 py-2 rounded-md bg-slate-700 hover:bg-slate-600"
+                onClick={() => setConfirmGroup(null)}
+                disabled={deleteMutation.isPending}
+              >
+                Скасувати
+              </button>
+              <button
+                type="button"
+                className="px-4 py-2 rounded-md bg-red-500 hover:bg-red-600 disabled:opacity-60"
+                onClick={handleConfirmDelete}
+                disabled={deleteMutation.isPending}
+              >
+                {deleteMutation.isPending ? 'Видалення...' : 'Так, видалити'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
