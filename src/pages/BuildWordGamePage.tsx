@@ -134,7 +134,7 @@ const BuildWordGamePage = () => {
     if (!words) return [];
 
     let pool = words.filter((w) =>
-      /^[a-zA-Z ]+$/.test(w.word_en) // поки беремо тільки "простi" слова з латиницею та пробілами
+      /^[a-zA-Z ,]+$/.test(w.word_en) // поки беремо тільки "простi" слова з латиницею та пробілами
     );
 
     if (settings.status !== 'all') {
@@ -168,6 +168,13 @@ const BuildWordGamePage = () => {
           index: newSlots.length,
           type: 'space',
           char: ' ',
+          sourceButtonId: undefined
+        });
+      } else if (ch === ',') {
+        newSlots.push({
+          index: newSlots.length,
+          type: 'letter',
+          char: ',',
           sourceButtonId: undefined
         });
       } else {
